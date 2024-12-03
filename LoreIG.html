@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Ordine - La Sfida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="LoreIG.css">
+</head>
+<body>
+    <div class="mystic-bg"></div>
+    <div class="smoke-effect"></div>
+
+    <img src="logo/LOGO1REMOVED.png" class="header-logo" alt="L'Ordine">
+
+    <main class="lore-container">
+        <h1 class="main-title">L'Ordine</h1>
+        <p class="motto">Ciò che è nascosto ai più, si rivela ai degni</p>
+
+        <div class="section">
+            <div class="text-block fade-in">
+                <h2>La Sfida</h2>
+                <p>Una serie di enigmi, prove e sfide metterà alla prova il tuo intelletto, la tua determinazione e il tuo coraggio. Solo i migliori potranno avanzare, solo uno potrà conquistare il premio finale.</p>
+            </div>
+
+            <div class="text-block fade-in">
+                <h2>La Posta in Gioco</h2>
+                <p>Un montepremi significativo attende chi dimostrerà di essere superiore agli altri. Ma non è solo questione di denaro: è una prova di supremazia intellettuale, un'opportunità di dimostrare il proprio valore.</p>
+            </div>
+
+            <div class="text-block fade-in">
+                <h2>Il Percorso</h2>
+                <p>Ogni settimana nuove sfide, ogni mese nuove eliminazioni. Un percorso che selezionerà naturalmente i più meritevoli, fino a coronare il vincitore assoluto. Sei pronto a metterti alla prova?</p>
+            </div>
+
+            <div class="text-block fade-in">
+                <h2>Collabora con Noi</h2>
+                <p>Hai competenze particolari? Pensi di poter contribuire alla creazione delle sfide? L'Ordine è sempre alla ricerca di menti brillanti per espandere i propri orizzonti.</p>
+                <button class="work-button" onclick="openContactForm()">Lavora con Noi</button>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p class="final-message">Seguici sui social per non perdere l'opportunità di partecipare alla prossima sfida.</p>
+            <p class="final-tagline">L'Ordine ti osserva.</p>
+        </div>
+    </main>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeContactForm()">&times;</span>
+            <h2>Contatta L'Ordine</h2>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder="La tua email">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" required placeholder="Il tuo messaggio"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Invia</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="LoreIG.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</body>
+</html>

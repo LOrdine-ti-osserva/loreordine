@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+:root {
+    --color-primary: #F62C2F;
+    --color-primary-light: #F62C2F;
+    --color-primary-dark: #F62C2F;
+    --color-bg: #050507;
+    --color-bg-alt: #0a0a0f;
+    --color-text: #e0e0e0;
+    --color-text-muted: #666666;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Cinzel Decorative', serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.mystic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 45, 85, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 45, 85, 0.03) 0%, transparent 50%),
+        linear-gradient(45deg, #050507 0%, #0a0a0f 100%);
+    z-index: -2;
+}
+
+.smoke-effect {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.smoke-effect::before,
+.smoke-effect::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(ellipse at center, 
+        rgba(246, 44, 47, 0) 0%,
+        rgba(246, 44, 47, 0.02) 40%,
+        rgba(246, 44, 47, 0.04) 60%,
+        rgba(246, 44, 47, 0) 100%
+    );
+    animation: smoke-drift 20s linear infinite;
+}
+
+.smoke-effect::after {
+    animation: smoke-drift 15s linear infinite reverse;
+    opacity: 0.7;
+}
+
+@keyframes smoke-drift {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    33% {
+        transform: translate(-2%, -1%) rotate(1deg) scale(1.02);
+    }
+    66% {
+        transform: translate(1%, 2%) rotate(-1deg) scale(0.98);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+.header-logo {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 250px;
+    z-index: 1000;
+}
+
+.lore-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 120px 2rem 4rem;
+}
+
+.main-title {
+    font-size: 4rem;
+    text-align: center;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-shadow: 
+        0 0 10px rgba(255, 45, 85, 0.3),
+        0 0 20px rgba(255, 45, 85, 0.2),
+        0 0 30px rgba(255, 45, 85, 0.1);
+}
+
+.motto {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+    margin-bottom: 4rem;
+    font-style: italic;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.text-block {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(246, 44, 47, 0.1);
+}
+
+.text-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.text-block h2 {
+    color: var(--color-primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(246, 44, 47, 0.3);
+}
+
+.text-block p {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.work-button {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 0.8rem 2rem;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.work-button:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.cta-section {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.final-message {
+    font-size: 1.6rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.final-tagline {
+    font-size: 1.6rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-top: 2rem;  /* Spazio sopra la frase */
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .final-message,
+    .final-tagline {
+        font-size: 1.3rem;
+    }
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--color-bg-alt);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid var(--color-primary);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(246, 44, 47, 0.2);
+}
+
+.close-button {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: var(--color-primary);
+}
+
+.modal h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modal .form-group {
+    margin-bottom: 1rem;
+}
+
+.modal input,
+.modal textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(246, 44, 47, 0.2);
+    border-radius: 4px;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.modal textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.modal .submit-button {
+    background: var(--color-primary);
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel Decorative', serif;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.modal .submit-button:hover {
+    background: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .motto {
+        font-size: 1.2rem;
+    }
+    
+    .text-block h2 {
+        font-size: 1.5rem;
+    }
+    
+    .text-block p {
+        font-size: 1rem;
+    }
+    
+    .final-message {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .lore-container {
+        padding: 100px 1.5rem 3rem;
+    }
+    
+    .text-block {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .modal textarea {
+        height: 120px;
+    }
+}
+
+@media (max-width: 350px) {
+    .header-logo {
+        width: 100px;
+    }
+
+    .work-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .text-block {
+        padding: 1rem;
+    }
+}
+
+.message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    color: white;
+    z-index: 1001;
+    background: var(--color-primary);
+    font-family: 'Cinzel Decorative', serif;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
