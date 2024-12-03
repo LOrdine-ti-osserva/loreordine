@@ -87,7 +87,9 @@ body {
     position: fixed;
     top: 15px;
     left: 15px;
-    width: 250px;
+    width: 20%; /* Adatta il logo alla larghezza dello schermo */
+    max-width: 150px; /* Imposta una dimensione massima per evitare che diventi troppo grande */
+    height: auto; /* Mantiene le proporzioni */
     z-index: 1000;
 }
 
@@ -357,4 +359,25 @@ body {
 @keyframes slideIn {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .header-logo {
+        width: 30%; /* Più grande per tablet */
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        width: 40%; /* Ancora più grande per smartphone */
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 350px) {
+    .header-logo {
+        width: 50%;
+        max-width: 80px; /* Molto piccolo per schermi minuscoli */
+    }
 }
